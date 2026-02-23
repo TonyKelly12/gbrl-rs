@@ -4,4 +4,5 @@
 
 pub mod machines {
     pub mod grbl;
+    pub mod session;
 }

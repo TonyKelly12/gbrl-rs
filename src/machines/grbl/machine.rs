@@ -130,6 +130,12 @@ impl GrblMachine {
         self.state.lock().await.clone()
     }
 
+    /// Subscribe to status updates from the poller. Each receiver gets a copy of every
+    /// status broadcast; use for session logging (e.g. throttled record_status).
+    pub fn subscribe_status(&self) -> broadcast::Receiver<MachineStatus> {
+        self._broadcast_tx.subscribe()
+    }
+
     /// Probe Z: send G38.2 Z toward negative (e.g. `G38.2 Z-10 F50`). Fails if probe not triggered.
     pub async fn probe_z(&self, distance_mm: f64, feed_mm_min: f64) -> Result<(), GrblError> {
         let line = format!("G38.2 Z-{:.4} F{:.4}", distance_mm, feed_mm_min);
