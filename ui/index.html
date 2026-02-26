@@ -49,11 +49,20 @@
 </head>
 <body>
   <h1>MeshForge CNC</h1>
+  <div class="card" id="mock-banner" hidden>
+    <h2>Demo mode</h2>
+    <p style="margin:0; font-size: 0.9rem;">Running with <code>MESHFORGE_MOCK=1</code>. Ports and status are fake — no machine connected.</p>
+  </div>
   <div class="card">
     <h2>Serial ports</h2>
     <button id="refresh" type="button">Refresh ports</button>
     <ul id="ports" aria-live="polite"></ul>
     <p id="ports-error" class="error" hidden></p>
+  </div>
+  <div class="card" id="status-card" hidden>
+    <h2>Machine status (mock)</h2>
+    <p id="status-text" style="margin:0; font-family: ui-monospace, monospace; font-size: 0.9rem;"></p>
+    <button id="status-refresh" type="button" style="margin-top: 0.5rem;">Refresh status</button>
   </div>
   <script src="main.js"></script>
 </body>

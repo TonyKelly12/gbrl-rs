@@ -39,6 +39,12 @@ The UI is a Tauri 2 app in `src-tauri/` with a static frontend in `ui/`.
    ```
    This starts a static server for `ui/` and opens the Tauri window. Use **Refresh ports** to list serial ports (from grbl-rs).
 
+   **Test without hardware (mock API):**
+   ```bash
+   npm run dev:mock
+   ```
+   Runs with `MESHFORGE_MOCK=1`: fake serial ports and mock machine status so you can exercise the UI with no machine connected.
+
 4. **Production build**
    ```bash
    npm run build
