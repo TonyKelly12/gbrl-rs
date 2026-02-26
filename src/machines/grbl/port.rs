@@ -17,6 +17,17 @@
 //! port.send_line("?").unwrap();
 //! let line = port.read_line(Duration::from_millis(500)).unwrap();
 //! ```
+//! 
+
+/// ToDO Check if connection is open or close
+/// ToDo and and remove connections
+/// TODO Close Connection
+/// TODO Set Write Filter
+/// TODO Check for timeout
+/// TODO update options
+/// TODO Destroy Connection
+/// TODO Add connection monitoring and logging
+/// 
 
 #![cfg(feature = "serial")]
 
