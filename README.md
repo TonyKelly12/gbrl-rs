@@ -1,8 +1,8 @@
-# grbl-rs / MeshForge
+# rusty-gbrl / MeshForge
 
 Rust CNC control library for GRBL-HAL and the MeshForge Tauri desktop app.
 
-## Library (grbl-rs)
+## Library (rusty-gbrl)
 
 - **`machines::grbl`** — GRBL-HAL communication (parser, commands, state, port, poller, streamer, motion). Use the `serial` feature for hardware: `cargo build --features serial`.
 - **`machines::session`** — Black box recorder (probe + status logging to JSONL).
