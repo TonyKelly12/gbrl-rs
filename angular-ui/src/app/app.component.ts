@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TauriService, MockStatusDto } from './core';
-import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, JobConfigComponent, FileLoadComponent } from './components';
+import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, RunJobPanelComponent, JobConfigTabsComponent, FileLoadComponent } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, JobConfigComponent, FileLoadComponent],
+  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, RunJobPanelComponent, JobConfigTabsComponent, FileLoadComponent],
   template: `
     <app-header></app-header>
 
     <main class="main-content">
       <div class="main-body">
         <div class="main-body-left">
-          <app-file-load></app-file-load>
           @if (mockMode) {
             <div class="card" id="mock-banner">
               <h2>Demo mode</h2>
@@ -37,8 +36,18 @@ import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerCompo
         <aside class="main-body-right">
           <app-machine-coordinates-panel></app-machine-coordinates-panel>
           <app-jog-controls></app-jog-controls>
-          <app-job-config></app-job-config>
         </aside>
+      </div>
+      <div class="main-body-bottom">
+        <div class="bottom-panel bottom-left">
+          <app-file-load></app-file-load>
+        </div>
+        <div class="bottom-panel bottom-center">
+          <app-run-job-panel></app-run-job-panel>
+        </div>
+        <div class="bottom-panel bottom-right">
+          <app-job-config-tabs></app-job-config-tabs>
+        </div>
       </div>
     </main>
   `,
@@ -69,6 +78,20 @@ import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerCompo
       flex-direction: column;
       gap: 1rem;
     }
+    .main-body-bottom {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      margin-top: 1rem;
+      align-items: stretch;
+    }
+    .bottom-panel {
+      flex: 1;
+      min-width: 0;
+    }
+    .bottom-left { flex: 1; }
+    .bottom-center { flex: 1; }
+    .bottom-right { flex: 1; }
   `],
 })
 export class AppComponent implements OnInit {

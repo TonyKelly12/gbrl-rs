@@ -4,13 +4,13 @@ import { JobCommandComponent, type JobCommandAction } from '../job-command/job-c
 import { SliderComponent } from '../slider/slider.component';
 
 @Component({
-  selector: 'app-job-config',
+  selector: 'app-run-job-panel',
   standalone: true,
   imports: [CommonModule, JobCommandComponent, SliderComponent],
   template: `
-    <section class="job-config" aria-label="Job configuration">
+    <section class="run-job-panel" aria-label="Run job">
       <app-job-command (action)="onJobCommand($event)"></app-job-command>
-      <div class="job-config-sliders">
+      <div class="run-job-sliders">
         <app-slider
           label="Feed"
           unit="mm/min"
@@ -37,13 +37,13 @@ import { SliderComponent } from '../slider/slider.component';
     </section>
   `,
   styles: [`
-    .job-config {
+    .run-job-panel {
       background: var(--surface, #24283b);
       border-radius: 8px;
       padding: 1rem;
       border: 1px solid var(--muted, #565f89);
     }
-    .job-config-sliders {
+    .run-job-sliders {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -51,7 +51,7 @@ import { SliderComponent } from '../slider/slider.component';
     }
   `],
 })
-export class JobConfigComponent {
+export class RunJobPanelComponent {
   readonly feedValue = signal(0);
   readonly spindleValue = signal(0);
 
