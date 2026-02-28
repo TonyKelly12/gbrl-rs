@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TauriService, MockStatusDto } from './core';
-import { HeaderComponent, MachineCoordinatesPanelComponent } from './components';
+import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent],
+  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent],
   template: `
     <app-header></app-header>
 
@@ -30,6 +30,9 @@ import { HeaderComponent, MachineCoordinatesPanelComponent } from './components'
             </div>
           }
         </div>
+        <div class="main-body-center">
+          <app-gcode-visualizer></app-gcode-visualizer>
+        </div>
         <aside class="main-body-right">
           <app-machine-coordinates-panel></app-machine-coordinates-panel>
         </aside>
@@ -44,13 +47,18 @@ import { HeaderComponent, MachineCoordinatesPanelComponent } from './components'
     .main-body {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
       gap: 1.5rem;
-      align-items: flex-start;
+      align-items: stretch;
+      min-height: calc(100vh - 48px - 2rem);
     }
     .main-body-left {
+      flex: 0 0 auto;
+      min-width: 0;
+    }
+    .main-body-center {
       flex: 1;
       min-width: 0;
+      min-height: 320px;
     }
     .main-body-right {
       flex-shrink: 0;
