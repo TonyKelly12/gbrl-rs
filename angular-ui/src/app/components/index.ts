@@ -4,3 +4,11 @@ export { MachineStateDisplayComponent } from './machine-state-display/machine-st
 export { MachineCoordinatesPanelComponent } from './machine-coordinates-panel/machine-coordinates-panel.component';
 export { WebglPreviewComponent } from './webgl-preview/webgl-preview.component';
 export { GcodeVisualizerComponent } from './gcode-visualizer/gcode-visualizer.component';
+export { XyJogComponent } from './jog-controls/xy-jog/xy-jog.component';
+export type { XyJogDirection } from './jog-controls/xy-jog/xy-jog.component';
+export { ZJogComponent } from './jog-controls/z-jog/z-jog.component';
+export type { ZJogDirection } from './jog-controls/z-jog/z-jog.component';
+export { JogSpeedControlsComponent } from './jog-speed-controls/jog-speed-controls.component';
+export type { JogSpeedPreset } from './jog-speed-controls/jog-speed-controls.component';
+export { ExactPositionFormComponent, type ExactPosition } from './exact-position-form/exact-position-form.component';
+export { JogControlsComponent } from './jog-controls/jog-controls.component';

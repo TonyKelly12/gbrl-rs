@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TauriService, MockStatusDto } from './core';
-import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent } from './components';
+import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent],
+  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent],
   template: `
     <app-header></app-header>
 
@@ -35,6 +35,7 @@ import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerCompo
         </div>
         <aside class="main-body-right">
           <app-machine-coordinates-panel></app-machine-coordinates-panel>
+          <app-jog-controls></app-jog-controls>
         </aside>
       </div>
     </main>
@@ -62,6 +63,9 @@ import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerCompo
     }
     .main-body-right {
       flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
   `],
 })

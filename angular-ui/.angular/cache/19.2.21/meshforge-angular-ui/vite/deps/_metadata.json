@@ -1,49 +1,55 @@
 {
-  "hash": "56e493a5",
-  "configHash": "96ebaa2a",
+  "hash": "62d8b327",
+  "configHash": "28a67975",
   "lockfileHash": "4ff76adc",
-  "browserHash": "dc7ab4f8",
+  "browserHash": "3a0e218d",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "7cd9e29f",
+      "fileHash": "27083b74",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "75198142",
+      "fileHash": "be4e4b05",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "cc3a75b1",
+      "fileHash": "bc7c813c",
       "needsInterop": false
     },
     "three": {
       "src": "../../../../../../node_modules/three/build/three.module.js",
       "file": "three.js",
-      "fileHash": "44c39aae",
+      "fileHash": "5940fef6",
       "needsInterop": false
     },
     "three/examples/jsm/controls/OrbitControls.js": {
       "src": "../../../../../../node_modules/three/examples/jsm/controls/OrbitControls.js",
       "file": "three_examples_jsm_controls_OrbitControls__js.js",
-      "fileHash": "618870f6",
+      "fileHash": "07bbff2a",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "f85c85ee",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-FWFWUN2E": {
-      "file": "chunk-FWFWUN2E.js"
+    "chunk-SHWIQHZM": {
+      "file": "chunk-SHWIQHZM.js"
     },
     "chunk-RDKSWIAK": {
       "file": "chunk-RDKSWIAK.js"
     },
-    "chunk-6RGOMQEP": {
-      "file": "chunk-6RGOMQEP.js"
+    "chunk-Y5QUXHAI": {
+      "file": "chunk-Y5QUXHAI.js"
     },
     "chunk-WDMUDEB6": {
       "file": "chunk-WDMUDEB6.js"
