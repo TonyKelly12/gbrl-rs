@@ -27,3 +27,5 @@ export type { FileCommandAction } from './file-command/file-command.component';
 export { FileInformationComponent } from './file-information/file-information.component';
 export type { FileInfoView, FileBounds } from './file-information/file-information.component';
 export { FileLoadComponent } from './file-load/file-load.component';
+export { MainMenuComponent } from './main-menu/main-menu.component';
+export type { MainMenuTabId } from './main-menu/main-menu.component';

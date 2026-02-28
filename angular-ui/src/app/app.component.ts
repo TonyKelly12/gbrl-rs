@@ -1,67 +1,107 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TauriService, MockStatusDto } from './core';
-import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, RunJobPanelComponent, JobConfigTabsComponent, FileLoadComponent } from './components';
+import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, RunJobPanelComponent, JobConfigTabsComponent, FileLoadComponent, MainMenuComponent } from './components';
+import type { MainMenuTabId } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, RunJobPanelComponent, JobConfigTabsComponent, FileLoadComponent],
+  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, RunJobPanelComponent, JobConfigTabsComponent, FileLoadComponent, MainMenuComponent],
   template: `
     <app-header></app-header>
 
-    <main class="main-content">
-      <div class="main-body">
-        <div class="main-body-left">
-          @if (mockMode) {
-            <div class="card" id="mock-banner">
-              <h2>Demo mode</h2>
-              <p style="margin:0; font-size: 0.9rem;">
-                Running with <code>MESHFORGE_MOCK=1</code>. Ports and status are fake — no machine connected.
-              </p>
-            </div>
-          }
+    <div class="app-layout">
+      <app-main-menu
+        [activeTab]="activeMenuTab()"
+        (tabChange)="activeMenuTab.set($event)"
+      ></app-main-menu>
+      <main class="main-content">
+        @switch (activeMenuTab()) {
+          @case ('carve') {
+            <div class="main-body">
+              <div class="main-body-left">
+                @if (mockMode) {
+                  <div class="card" id="mock-banner">
+                    <h2>Demo mode</h2>
+                    <p style="margin:0; font-size: 0.9rem;">
+                      Running with <code>MESHFORGE_MOCK=1</code>. Ports and status are fake — no machine connected.
+                    </p>
+                  </div>
+                }
 
-          @if (mockMode) {
-            <div class="card" id="status-card">
-              <h2>Machine status (mock)</h2>
-              <p class="status-text">{{ statusText }}</p>
-              <button type="button" (click)="refreshStatus()" style="margin-top: 0.5rem;">Refresh status</button>
+                @if (mockMode) {
+                  <div class="card" id="status-card">
+                    <h2>Machine status (mock)</h2>
+                    <p class="status-text">{{ statusText }}</p>
+                    <button type="button" (click)="refreshStatus()" style="margin-top: 0.5rem;">Refresh status</button>
+                  </div>
+                }
+              </div>
+              <div class="main-body-center">
+                <app-gcode-visualizer></app-gcode-visualizer>
+              </div>
+              <aside class="main-body-right">
+                <app-machine-coordinates-panel></app-machine-coordinates-panel>
+                <app-jog-controls></app-jog-controls>
+              </aside>
+            </div>
+            <div class="main-body-bottom">
+              <div class="bottom-panel bottom-left">
+                <app-file-load></app-file-load>
+              </div>
+              <div class="bottom-panel bottom-center">
+                <app-run-job-panel></app-run-job-panel>
+              </div>
+              <div class="bottom-panel bottom-right">
+                <app-job-config-tabs></app-job-config-tabs>
+              </div>
             </div>
           }
-        </div>
-        <div class="main-body-center">
-          <app-gcode-visualizer></app-gcode-visualizer>
-        </div>
-        <aside class="main-body-right">
-          <app-machine-coordinates-panel></app-machine-coordinates-panel>
-          <app-jog-controls></app-jog-controls>
-        </aside>
-      </div>
-      <div class="main-body-bottom">
-        <div class="bottom-panel bottom-left">
-          <app-file-load></app-file-load>
-        </div>
-        <div class="bottom-panel bottom-center">
-          <app-run-job-panel></app-run-job-panel>
-        </div>
-        <div class="bottom-panel bottom-right">
-          <app-job-config-tabs></app-job-config-tabs>
-        </div>
-      </div>
-    </main>
+          @case ('helper') {
+            <div class="menu-placeholder">Helper — coming soon</div>
+          }
+          @case ('stats') {
+            <div class="menu-placeholder">Stats — coming soon</div>
+          }
+          @case ('tools') {
+            <div class="menu-placeholder">Tools — coming soon</div>
+          }
+          @case ('config') {
+            <div class="menu-placeholder">Config — coming soon</div>
+          }
+        }
+      </main>
+    </div>
   `,
   styles: [`
+    .app-layout {
+      display: flex;
+      flex-direction: row;
+      height: calc(100vh - 48px);
+    }
     .main-content {
+      flex: 1;
+      min-width: 0;
       padding: 1rem 1.25rem;
-      min-height: calc(100vh - 48px);
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-placeholder {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted, #565f89);
+      font-size: 1rem;
     }
     .main-body {
       display: flex;
       flex-direction: row;
       gap: 1.5rem;
       align-items: stretch;
-      min-height: calc(100vh - 48px - 2rem);
+      flex: 1;
+      min-height: 320px;
     }
     .main-body-left {
       flex: 0 0 auto;
@@ -95,6 +135,7 @@ import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerCompo
   `],
 })
 export class AppComponent implements OnInit {
+  readonly activeMenuTab = signal<MainMenuTabId>('carve');
   mockMode = false;
   statusText = '';
 
