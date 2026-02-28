@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TauriService, MockStatusDto } from './core';
-import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent } from './components';
+import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, JobConfigComponent } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent],
+  imports: [CommonModule, HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerComponent, JogControlsComponent, JobConfigComponent],
   template: `
     <app-header></app-header>
 
@@ -36,6 +36,7 @@ import { HeaderComponent, MachineCoordinatesPanelComponent, GcodeVisualizerCompo
         <aside class="main-body-right">
           <app-machine-coordinates-panel></app-machine-coordinates-panel>
           <app-jog-controls></app-jog-controls>
+          <app-job-config></app-job-config>
         </aside>
       </div>
     </main>

@@ -12,3 +12,8 @@ export { JogSpeedControlsComponent } from './jog-speed-controls/jog-speed-contro
 export type { JogSpeedPreset } from './jog-speed-controls/jog-speed-controls.component';
 export { ExactPositionFormComponent, type ExactPosition } from './exact-position-form/exact-position-form.component';
 export { JogControlsComponent } from './jog-controls/jog-controls.component';
+export { SliderComponent } from './slider/slider.component';
+export type { SliderColor } from './slider/slider.component';
+export { JobCommandComponent } from './job-command/job-command.component';
+export type { JobCommandAction } from './job-command/job-command.component';
+export { JobConfigComponent } from './job-config/job-config.component';
